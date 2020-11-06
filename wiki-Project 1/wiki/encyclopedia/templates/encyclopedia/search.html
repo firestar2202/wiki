@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+   Search
+{% endblock %}
+
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <form action="{% url 'encyclopedia:search' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+
+    <div>
+        View Entries
+        <ul>
+            {% for entry in entries %}
+            <li><a href={{entry}}> {{ entry }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}
